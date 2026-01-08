@@ -6,72 +6,64 @@
   <title>Calculadora Novo Ser Solidário</title>
   <style>
     :root{
-      --bg:#0b1020;
-      --panel:rgba(255,255,255,.06);
-      --panel2:rgba(255,255,255,.08);
-      --stroke:rgba(255,255,255,.12);
-      --text:#eef2ff;
-      --muted:rgba(238,242,255,.72);
-      --brand:#6d7dff;
-      --brand2:#23d5ab;
-      --warn:#ffcc66;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      /* Paleta institucional (amarelo + preto) */
+      --bg:#0b0b0d;               /* quase preto */
+      --panel:#111114;            /* painel */
+      --panel2:#16161b;           /* painel 2 */
+      --stroke:rgba(255,255,255,.10);
+      --text:#ffffff;
+      --muted:rgba(255,255,255,.72);
+
+      --brand:#f2c200;            /* amarelo institucional */
+      --brand2:#ffd84d;           /* amarelo claro */
+      --danger:#ffcc66;
+
+      --shadow: 0 18px 55px rgba(0,0,0,.55);
       --radius:18px;
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif;
       background:
-        radial-gradient(900px 500px at 15% 10%, rgba(109,125,255,.35), transparent 60%),
-        radial-gradient(800px 450px at 80% 5%, rgba(35,213,171,.22), transparent 55%),
-        radial-gradient(800px 500px at 65% 95%, rgba(255,204,102,.18), transparent 55%),
+        radial-gradient(900px 500px at 18% 10%, rgba(242,194,0,.18), transparent 60%),
+        radial-gradient(800px 450px at 85% 10%, rgba(255,216,77,.10), transparent 55%),
+        radial-gradient(900px 600px at 55% 100%, rgba(242,194,0,.10), transparent 60%),
         var(--bg);
       color:var(--text);
     }
-    .wrap{
-      max-width: 1150px;
-      margin: 26px auto;
-      padding: 0 16px 28px;
-    }
-    .topbar{
-      display:flex; align-items:flex-start; justify-content:space-between;
-      gap:16px; flex-wrap:wrap;
-      margin-bottom:14px;
-    }
-    .title{
-      display:flex; align-items:center; gap:12px;
-    }
+
+    .wrap{max-width:1150px;margin:26px auto;padding:0 16px 28px}
+    .topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+
+    .title{display:flex;align-items:center;gap:12px}
     .logo{
-      width:44px; height:44px;
-      border-radius:14px;
-      background: linear-gradient(135deg, rgba(109,125,255,.95), rgba(35,213,171,.95));
-      box-shadow: 0 12px 30px rgba(0,0,0,.35);
-      display:grid; place-items:center;
-      font-weight:900; color:#081027;
-      letter-spacing:.5px;
+      width:46px;height:46px;border-radius:14px;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 16px 36px rgba(0,0,0,.55);
+      display:grid;place-items:center;
+      font-weight:900;color:#111;letter-spacing:.6px;
       user-select:none;
+      border:1px solid rgba(0,0,0,.25);
     }
-    h1{margin:0; font-size:18px; letter-spacing:.2px}
-    .subtitle{margin:4px 0 0; font-size:13px; color:var(--muted); line-height:1.35}
-    .actions{
-      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
-    }
+    h1{margin:0;font-size:18px;letter-spacing:.2px}
+    .subtitle{margin:4px 0 0;font-size:13px;color:var(--muted);line-height:1.35}
+
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .chip{
-      padding:8px 10px;
-      border-radius:999px;
-      border:1px solid var(--stroke);
-      background: rgba(255,255,255,.05);
-      color: var(--muted);
+      padding:8px 10px;border-radius:999px;
+      border:1px solid rgba(242,194,0,.25);
+      background: rgba(242,194,0,.10);
+      color: rgba(255,255,255,.86);
       font-size:12px;
-      display:inline-flex; gap:8px; align-items:center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      display:inline-flex;gap:8px;align-items:center;
     }
 
     .card{
       border-radius: var(--radius);
       border:1px solid var(--stroke);
-      background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
       box-shadow: var(--shadow);
       overflow:hidden;
     }
@@ -82,223 +74,192 @@
       gap:14px;
       padding:14px;
     }
-    @media (max-width: 980px){
-      .grid{grid-template-columns:1fr}
-    }
+    @media (max-width: 980px){ .grid{grid-template-columns:1fr} }
 
     .box{
       border-radius: 16px;
       border: 1px solid var(--stroke);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.05);
       padding: 14px;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.05);
     }
+
     .box h2{
       margin:0 0 10px;
       font-size:13px;
       letter-spacing:.2px;
-      color: rgba(238,242,255,.92);
-      display:flex;
-      align-items:center;
-      gap:8px;
+      color: rgba(255,255,255,.92);
+      display:flex;align-items:center;gap:8px;
     }
+
     .icon{
-      width:18px; height:18px; display:inline-grid; place-items:center;
+      width:18px;height:18px;display:inline-grid;place-items:center;
       border-radius:8px;
-      background: rgba(109,125,255,.20);
-      border:1px solid rgba(109,125,255,.35);
+      background: rgba(242,194,0,.16);
+      border:1px solid rgba(242,194,0,.30);
       font-size:12px;
+      color:#111;
     }
 
-    .form{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:12px;
-    }
-    @media (max-width: 560px){
-      .form{grid-template-columns:1fr}
+    .form{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width: 560px){ .form{grid-template-columns:1fr} }
+
+    label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+
+    .input-group {
+      position: relative;
     }
 
-    label{
-      display:block;
-      font-size:12px;
-      color: var(--muted);
-      margin-bottom:6px;
+    .input-group span {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgba(255,255,255,.6);
+      font-size: 14px;
+      pointer-events: none;
+      z-index: 2;
     }
-    .field{
-      position:relative;
+
+    .input-group input.with-prefix {
+      padding-left: 40px;
     }
+
     input{
       width:100%;
-      padding: 11px 12px;
+      padding:11px 12px;
       border-radius: 14px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(10,14,32,.45);
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(0,0,0,.35);
       color: var(--text);
       outline:none;
       font-size:14px;
       transition: .15s ease;
+      text-align: left;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.5px;
     }
+    
+    /* Especial para campos monetários */
+    input.money {
+      font-weight: 500;
+    }
+    
     input:focus{
-      border-color: rgba(109,125,255,.65);
-      box-shadow: 0 0 0 5px rgba(109,125,255,.18);
+      border-color: rgba(242,194,0,.70);
+      box-shadow: 0 0 0 5px rgba(242,194,0,.18);
     }
+
     .hint{
       margin-top:6px;
       font-size:11px;
-      color: rgba(238,242,255,.55);
+      color:rgba(255,255,255,.55);
+      font-style: italic;
     }
 
-    .row{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      flex-wrap:wrap;
-      margin-top:12px;
-    }
-
-    .btn{
-      cursor:pointer;
-      border:0;
-      border-radius: 14px;
-      padding: 11px 14px;
-      font-weight:800;
-      font-size:13px;
-      letter-spacing:.2px;
-      color:#0b1020;
-      background: linear-gradient(135deg, rgba(109,125,255,.95), rgba(35,213,171,.95));
-      box-shadow: 0 12px 26px rgba(0,0,0,.35);
-      transition: transform .12s ease;
-    }
-    .btn:hover{transform: translateY(-1px)}
-    .btn:active{transform: translateY(0px)}
-
-    .btn2{
-      cursor:pointer;
-      border-radius: 14px;
-      padding: 11px 14px;
-      font-weight:800;
-      font-size:13px;
-      background: rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.14);
-      color: var(--text);
-      transition: .12s ease;
-    }
-    .btn2:hover{
-      background: rgba(255,255,255,.09);
-    }
-
-    .seg{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin-top:10px;
-    }
+    .seg{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
     .seg button{
-      cursor:pointer;
-      border-radius: 999px;
-      padding: 8px 10px;
-      font-size:12px;
-      font-weight:800;
+      cursor:pointer;border-radius:999px;padding:8px 10px;
+      font-size:12px;font-weight:900;
       border:1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
+      background: rgba(255,255,255,.05);
       color: var(--text);
       transition: .12s ease;
     }
     .seg button.active{
-      border-color: rgba(109,125,255,.65);
-      box-shadow: 0 0 0 4px rgba(109,125,255,.14);
-      background: rgba(109,125,255,.18);
+      border-color: rgba(242,194,0,.70);
+      box-shadow: 0 0 0 4px rgba(242,194,0,.14);
+      background: rgba(242,194,0,.16);
+      color: #fff;
     }
 
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px}
+
     .pill{
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,.14);
-      background: rgba(255,255,255,.06);
-      font-size: 12px;
-      color: var(--muted);
-      display:flex; gap:8px; align-items:center;
+      padding:9px 12px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background: rgba(255,255,255,.05);
+      font-size:12px;color:var(--muted);
+      display:flex;gap:8px;align-items:center;
     }
-    .pill b{color: var(--text)}
+    .pill b{color:var(--text)}
+
+    .btn{
+      cursor:pointer;border:0;border-radius:14px;
+      padding:11px 14px;font-weight:900;font-size:13px;letter-spacing:.2px;
+      color:#111;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 14px 28px rgba(0,0,0,.55);
+      transition: transform .12s ease;
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+
+    .btn2{
+      cursor:pointer;border-radius:14px;padding:11px 14px;
+      font-weight:900;font-size:13px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.14);
+      color: var(--text);
+      transition:.12s ease;
+    }
+    .btn2:hover{background: rgba(255,255,255,.09)}
 
     .kpis{
       display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px;
-      margin-top:12px;
+      grid-template-columns:1fr 1fr;
+      gap:10px;margin-top:12px;
     }
-    @media (max-width: 560px){
-      .kpis{grid-template-columns:1fr}
-    }
+    @media (max-width:560px){ .kpis{grid-template-columns:1fr} }
+
     .kpi{
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
       border-radius: 16px;
-      padding: 12px;
+      padding:12px;
     }
-    .kpi .t{
-      font-size:12px;
-      color: var(--muted);
-      display:flex; align-items:center; gap:8px;
-    }
-    .kpi .v{
-      margin-top:8px;
-      font-size:20px;
-      font-weight:900;
-      letter-spacing:.2px;
-    }
-    .kpi .s{
-      margin-top:6px;
-      font-size:11px;
-      color: rgba(238,242,255,.55);
-    }
+    .kpi .t{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:8px}
+    .kpi .v{margin-top:8px;font-size:20px;font-weight:950;letter-spacing:.2px}
+    .kpi .s{margin-top:6px;font-size:11px;color:rgba(255,255,255,.55)}
 
     .tablewrap{
-      margin-top:12px;
-      border-radius:16px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
+      margin-top:12px;border-radius:16px;overflow:hidden;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
     }
-    table{width:100%; border-collapse:collapse}
+    table{width:100%;border-collapse:collapse}
     th,td{
-      padding: 10px 12px;
-      border-bottom: 1px solid rgba(255,255,255,.10);
-      font-size:13px;
-      text-align:right;
-      color: rgba(238,242,255,.88);
+      padding:10px 12px;border-bottom:1px solid rgba(255,255,255,.10);
+      font-size:13px;text-align:right;color:rgba(255,255,255,.90);
     }
     th{
-      text-align:right;
-      font-size:12px;
-      color: rgba(238,242,255,.72);
-      background: rgba(255,255,255,.06);
-      font-weight:900;
-      letter-spacing:.2px;
+      font-size:12px;color:rgba(255,255,255,.72);
+      background: rgba(255,255,255,.05);
+      font-weight:950;letter-spacing:.2px;
     }
     td:first-child, th:first-child{text-align:left}
     tr:last-child td{border-bottom:0}
-    tfoot td{
-      background: rgba(255,255,255,.05);
-      font-weight:900;
-    }
+    tfoot td{background: rgba(255,255,255,.05);font-weight:950}
 
     .note{
-      margin-top:10px;
-      padding:10px 12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,204,102,.10);
-      color: rgba(255,229,186,.95);
+      margin-top:10px;padding:10px 12px;border-radius:16px;
+      border:1px solid rgba(242,194,0,.25);
+      background: rgba(242,194,0,.12);
+      color: rgba(255,255,255,.92);
       font-size:12px;
       display:none;
     }
-    .footer{
-      margin-top:12px;
-      color: rgba(238,242,255,.55);
-      font-size:11px;
-      line-height:1.35;
-    }
+    .footer{margin-top:12px;color:rgba(255,255,255,.55);font-size:11px;line-height:1.35}
     .mono{font-variant-numeric: tabular-nums;}
+    
+    /* Novos estilos para melhorias */
+    .example-text {
+      display: block;
+      margin-top: 4px;
+      font-size: 11px;
+      color: rgba(255,255,255,.4);
+      font-style: italic;
+    }
   </style>
 </head>
 <body>
@@ -308,12 +269,12 @@
         <div class="logo">SS</div>
         <div>
           <h1>Calculadora Novo Ser Solidário</h1>
-          <div class="subtitle">Preencha os valores e clique em <b>Calcular</b>. O resultado mostra o <b>1º semestre (6 meses)</b>.</div>
+          <div class="subtitle">Preencha os valores e clique em <b>Calcular</b>. Resultado mostra o <b>1º semestre (6 meses)</b>.</div>
         </div>
       </div>
       <div class="actions">
-        <div class="chip">📌 <span class="mono">R$ 129</span> por <b>1–3</b> meses</div>
-        <div class="chip">📊 Total do <b>1º semestre</b></div>
+        <div class="chip">🟡 Paleta institucional</div>
+        <div class="chip">📊 Total do 1º semestre</div>
       </div>
     </div>
 
@@ -324,44 +285,50 @@
           <h2><span class="icon">⚙️</span>Entradas</h2>
 
           <div class="form">
-            <div class="field">
+            <div>
               <label>Mensalidade integral (R$)</label>
-              <input id="mensalidade" type="number" min="0" step="0.01" value="1000">
-              <div class="hint">Valor cheio da mensalidade.</div>
+              <div class="input-group">
+                <span>R$</span>
+                <input id="mensalidade" type="text" value="00.111.111,11" class="with-prefix money">
+              </div>
+              <span class="example-text">Digite no formato brasileiro: 1.654,11</span>
             </div>
 
-            <div class="field">
+            <div>
               <label>Duração do curso (meses)</label>
               <input id="duracao" type="number" min="2" step="1" value="60">
               <div class="hint">Ex.: 48, 60, 72…</div>
             </div>
 
-            <div class="field">
+            <div>
               <label>Valor do Ser Solidário (R$)</label>
-              <input id="valor129" type="number" min="0" step="0.01" value="129">
-              <div class="hint">Normalmente R$ 129,00.</div>
+              <div class="input-group">
+                <span>R$</span>
+                <input id="valor129" type="text" value="129,00" class="with-prefix money">
+              </div>
+              <div class="hint">Normalmente 129,00</div>
             </div>
 
-            <div class="field">
-              <label>Meses com Ser Solidário (quantidade)</label>
-              <input id="meses129" type="number" min="1" max="36" step="1" value="2">
-              <div class="hint">Pode ser 1, 2 ou 3 (ou mais, se necessário).</div>
+            <div>
+              <label>Quantidade de meses com Ser Solidário</label>
+              <input id="meses129" type="number" min="1" step="1" value="2">
+              <div class="hint">Atalhos abaixo: 1 / 2 / 3</div>
             </div>
 
-            <div class="field">
+            <div>
               <label>Desconto Ser Solidário (%)</label>
               <input id="descSS" type="number" min="0" max="100" step="0.01" value="20">
-              <div class="hint">Ex.: 20%.</div>
+              <div class="hint">Ex.: 20</div>
             </div>
 
-            <div class="field">
+            <div>
               <label>Desconto da campanha (%)</label>
               <input id="descCamp" type="number" min="0" max="100" step="0.01" value="60">
-              <div class="hint">Ex.: 60%.</div>
+              <div class="hint">Ex.: 60</div>
             </div>
           </div>
 
-          <div class="seg" aria-label="Atalhos de meses com R$129">
+          <div class="seg">
             <button type="button" id="b1" onclick="setMeses(1)">1 mês</button>
             <button type="button" id="b2" onclick="setMeses(2)" class="active">2 meses</button>
             <button type="button" id="b3" onclick="setMeses(3)">3 meses</button>
@@ -376,7 +343,7 @@
           <div class="note" id="alerta"></div>
 
           <div class="footer">
-            Dica: use os botões <b>1/2/3 meses</b> para acelerar o atendimento do comercial.
+            Valores exibidos no padrão Brasil: <b>R$ 1.234,56</b>.
           </div>
         </section>
 
@@ -388,7 +355,7 @@
             <div class="kpi">
               <div class="t">💰 Saldo do Ser Solidário</div>
               <div class="v mono" id="saldo">—</div>
-              <div class="s">Diferença gerada nos meses de R$ 129.</div>
+              <div class="s">Diferença gerada nos meses de Ser Solidário.</div>
             </div>
 
             <div class="kpi">
@@ -398,7 +365,7 @@
             </div>
 
             <div class="kpi">
-              <div class="t">📅 Mensalidade após os meses de R$ 129</div>
+              <div class="t">📅 Mensalidade após os meses de Ser Solidário</div>
               <div class="v mono" id="mensalFinal">—</div>
               <div class="s">Campanha + diluição.</div>
             </div>
@@ -410,7 +377,7 @@
             </div>
           </div>
 
-          <div class="tablewrap" style="margin-top:12px;">
+          <div class="tablewrap">
             <table>
               <thead>
                 <tr>
@@ -421,7 +388,7 @@
               </thead>
               <tbody id="tabela">
                 <tr>
-                  <td colspan="3" style="text-align:left;color:rgba(238,242,255,.65);">
+                  <td colspan="3" style="text-align:left;color:rgba(255,255,255,.65);">
                     Clique em <b>Calcular</b> para gerar o 1º semestre.
                   </td>
                 </tr>
@@ -437,7 +404,7 @@
           </div>
 
           <div class="footer">
-            Obs.: Caso os meses com R$ 129 sejam maiores que a duração, o cálculo não é possível.
+            Dica: depois de calcular, você pode copiar os valores (saldo, parcela e mensalidade) para repassar ao aluno.
           </div>
         </section>
       </div>
@@ -445,24 +412,107 @@
   </div>
 
 <script>
-  function dinheiro(v){
-    return (isFinite(v) ? v : 0).toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+  // Função para formatar número como moeda brasileira
+  function moedaBR(v){
+    return (isFinite(v) ? v : 0).toLocaleString('pt-BR', {
+      style:'currency',
+      currency:'BRL',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
   }
+
+  // Função para converter string BR para número
+  function parseMoneyBR(str){
+    if (!str) return 0;
+    // Remove o "R$" e espaços, troca ponto por nada e vírgula por ponto
+    let clean = str.toString()
+      .replace('R$', '')
+      .replace(/\s/g, '')
+      .replace(/\./g, '')
+      .replace(',', '.')
+      .trim();
+    return parseFloat(clean) || 0;
+  }
+
+  // Função para formatar input de moeda enquanto digita
+  function formatMoneyInput(input){
+    let value = input.value;
+    
+    // Remove tudo que não é número, exceto vírgula
+    let numbers = value.replace(/[^\d,]/g, '');
+    
+    // Se não tiver números, retorna
+    if (numbers.length === 0) {
+      input.value = '';
+      return 0;
+    }
+    
+    // Separa parte inteira e decimal
+    let parts = numbers.split(',');
+    let integerPart = parts[0].replace(/\D/g, '');
+    let decimalPart = parts[1] ? parts[1].replace(/\D/g, '').substring(0, 2) : '';
+    
+    // Formata parte inteira com separadores de milhar
+    if (integerPart.length > 3) {
+      integerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+    }
+    
+    // Monta o valor formatado
+    let formattedValue = integerPart;
+    if (decimalPart.length > 0) {
+      formattedValue += ',' + decimalPart;
+    } else if (value.includes(',')) {
+      formattedValue += ',';
+    }
+    
+    // Atualiza o input
+    input.value = formattedValue;
+    
+    return parseMoneyBR(formattedValue);
+  }
+
+  // Event listeners para formatação automática
+  document.addEventListener('DOMContentLoaded', function(){
+    let mensalidadeInput = document.getElementById('mensalidade');
+    let valor129Input = document.getElementById('valor129');
+    
+    // Adiciona event listeners para formatação em tempo real
+    [mensalidadeInput, valor129Input].forEach(input => {
+      input.addEventListener('input', function(){
+        formatMoneyInput(this);
+      });
+      
+      input.addEventListener('blur', function(){
+        formatMoneyInput(this);
+        
+        // Se estiver vazio, coloca um valor padrão
+        if (this.value.trim() === '') {
+          if (this.id === 'mensalidade') {
+            this.value = '00.111.111,11';
+          } else if (this.id === 'valor129') {
+            this.value = '129,00';
+          }
+        }
+      });
+    });
+  });
 
   function setMeses(n){
     document.getElementById('meses129').value = n;
     ['b1','b2','b3'].forEach(id => document.getElementById(id).classList.remove('active'));
-    document.getElementById('b'+n).classList.add('active');
-    // atualiza meses restantes (sem recalcular tudo)
+    const btn = document.getElementById('b'+n);
+    if (btn) btn.classList.add('active');
+
     const dur = +document.getElementById('duracao').value || 0;
     document.getElementById('restantes').textContent = (dur - n > 0) ? (dur - n) : '—';
   }
 
   function calcular(){
-    const mensal = +document.getElementById('mensalidade').value || 0;
+    const mensal = parseMoneyBR(document.getElementById('mensalidade').value);
     const dur = +document.getElementById('duracao').value || 0;
     const b = +document.getElementById('meses129').value || 0;
-    const v129 = +document.getElementById('valor129').value || 0;
+    const v129 = parseMoneyBR(document.getElementById('valor129').value);
     const ss = (+document.getElementById('descSS').value || 0) / 100;
     const camp = (+document.getElementById('descCamp').value || 0) / 100;
 
@@ -477,12 +527,12 @@
     }
     if (b < 1){
       alerta.style.display = 'block';
-      alerta.textContent = 'A quantidade de meses com R$ 129 precisa ser no mínimo 1.';
+      alerta.textContent = 'A quantidade de meses com Ser Solidário precisa ser no mínimo 1.';
       return;
     }
     if (b >= dur){
       alerta.style.display = 'block';
-      alerta.textContent = 'A quantidade de meses com R$ 129 precisa ser menor que a duração do curso.';
+      alerta.textContent = 'A quantidade de meses com Ser Solidário precisa ser menor que a duração do curso.';
       return;
     }
 
@@ -490,39 +540,39 @@
     document.getElementById('restantes').textContent = restantesMeses;
 
     // Mesma lógica do Excel:
-    const saldoCalc = (mensal*(1-ss) - v129) * b;
-    const parcelaCalc = saldoCalc / restantesMeses;
-    const mensalFinalCalc = mensal*(1-camp) + parcelaCalc;
+    const saldo = (mensal*(1-ss) - v129) * b;
+    const parcela = saldo / restantesMeses;
+    const mensalFinal = mensal*(1-camp) + parcela;
 
-    document.getElementById('saldo').textContent = dinheiro(saldoCalc);
-    document.getElementById('parcela').textContent = dinheiro(parcelaCalc);
-    document.getElementById('mensalFinal').textContent = dinheiro(mensalFinalCalc);
+    document.getElementById('saldo').textContent = moedaBR(saldo);
+    document.getElementById('parcela').textContent = moedaBR(parcela);
+    document.getElementById('mensalFinal').textContent = moedaBR(mensalFinal);
 
     // tabela do 1º semestre (6 meses)
     const tabela = document.getElementById('tabela');
     tabela.innerHTML = '';
-    let total = 0;
+    let totalSem = 0;
     const mesesSem = Math.min(6, dur);
 
     for(let i=1;i<=mesesSem;i++){
       const ehSS = i <= b;
-      const valor = ehSS ? v129 : mensalFinalCalc;
-      total += valor;
+      const valor = ehSS ? v129 : mensalFinal;
+      totalSem += valor;
 
       const tr = document.createElement('tr');
       tr.innerHTML = `
         <td>Mês ${i}</td>
-        <td class="mono">${dinheiro(valor)}</td>
+        <td class="mono">${moedaBR(valor)}</td>
         <td>${ehSS ? 'Ser Solidário' : 'Campanha + diluição'}</td>
       `;
       tabela.appendChild(tr);
     }
 
-    document.getElementById('totalSem').textContent = dinheiro(total);
-    document.getElementById('rodapeTotal').textContent = dinheiro(total);
+    document.getElementById('totalSem').textContent = moedaBR(totalSem);
+    document.getElementById('rodapeTotal').textContent = moedaBR(totalSem);
 
-    // alerta suave se o saldo ficar negativo (situação rara, mas possível se v129 > mensal*(1-ss))
-    if (saldoCalc < 0){
+    // alerta suave se saldo negativo
+    if (saldo < 0){
       alerta.style.display = 'block';
       alerta.textContent = 'Atenção: o saldo ficou negativo. Verifique se o valor do Ser Solidário está maior que a mensalidade com desconto Ser Solidário.';
     }
@@ -531,7 +581,7 @@
   function limpar(){
     document.getElementById('tabela').innerHTML = `
       <tr>
-        <td colspan="3" style="text-align:left;color:rgba(238,242,255,.65);">
+        <td colspan="3" style="text-align:left;color:rgba(255,255,255,.65);">1
           Clique em <b>Calcular</b> para gerar o 1º semestre.
         </td>
       </tr>`;
@@ -541,9 +591,13 @@
     const alerta = document.getElementById('alerta');
     alerta.style.display = 'none';
     alerta.textContent = '';
+    
+    // Restaura valores padrão formatados
+    document.getElementById('mensalidade').value = '00.111.111,11';
+    document.getElementById('valor129').value = '129,00';
   }
 
-  // inicializa o destaque do botão "2 meses"
+  // padrão: 2 meses
   setMeses(2);
 </script>
 </body>
